@@ -1,0 +1,229 @@
+==========================================================================================
+          Analysis and Prediction of Test Results from Patients Heathcare Data LOG REPORT          
+==========================================================================================
+
+Log created at: 2024-07-16 20:16:09
+
+Model Utilised for the Experiment: DecisionTreeClassifier
+
+==========================================================================================
+DATA LOADING:
+
+
+  Data loaded: True
+
+
+  Total samples: 10000
+
+
+  Total features: 15
+
+
+  Missing values: No
+
+
+  Dataframe info: <class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10000 entries, 0 to 9999
+Data columns (total 15 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   Name                10000 non-null  object 
+ 1   Age                 10000 non-null  int64  
+ 2   Gender              10000 non-null  object 
+ 3   Blood Type          10000 non-null  object 
+ 4   Medical Condition   10000 non-null  object 
+ 5   Date of Admission   10000 non-null  object 
+ 6   Doctor              10000 non-null  object 
+ 7   Hospital            10000 non-null  object 
+ 8   Insurance Provider  10000 non-null  object 
+ 9   Billing Amount      10000 non-null  float64
+ 10  Room Number         10000 non-null  int64  
+ 11  Admission Type      10000 non-null  object 
+ 12  Discharge Date      10000 non-null  object 
+ 13  Medication          10000 non-null  object 
+ 14  Test Results        10000 non-null  object 
+dtypes: float64(1), int64(2), object(12)
+memory usage: 1.1+ MB
+
+
+--------------------------------------------------------------------------------
+DATA PROCESSING:
+
+
+  Missing values:
+
+    Name: 0
+    Age: 0
+    Gender: 0
+    Blood Type: 0
+    Medical Condition: 0
+    Date of Admission: 0
+    Doctor: 0
+    Hospital: 0
+    Insurance Provider: 0
+    Billing Amount: 0
+    Room Number: 0
+    Admission Type: 0
+    Discharge Date: 0
+    Medication: 0
+    Test Results: 0
+
+
+  Categorical columns: ['Name', 'Gender', 'Blood Type', 'Medical Condition', 'Date of Admission', 'Doctor', 'Hospital', 'Insurance Provider', 'Admission Type', 'Discharge Date', 'Medication', 'Test Results']
+
+
+  Numeric columns: ['Age', 'Billing Amount', 'Room Number']
+
+
+  Other columns: None
+
+
+  Imputation needed: No missing values. Imputation not needed.
+
+
+  Dtype changes:
+
+    Date of Admission: datetime64
+    Discharge Date: datetime64
+
+
+  Feature engineering: Total Days Admitted created
+
+
+  Encoded columns:
+
+    label_encoded: ['Gender', 'Test Results']
+    one_hot_encoded: ['Blood Type', 'Medical Condition', 'Insurance Provider', 'Medication', 'Admission Type']
+
+
+  Dropped columns: ['Name', 'Date of Admission', 'Hospital', 'Doctor', 'Discharge Date']
+
+
+  Final number of columns: 28
+
+
+  Final columns: Index(['Age', 'Gender', 'Billing Amount', 'Room Number', 'Test Results',
+       'Total Days Admitted', 'Blood Type_A-', 'Blood Type_AB+',
+       'Blood Type_AB-', 'Blood Type_B+', 'Blood Type_B-', 'Blood Type_O+',
+       'Blood Type_O-', 'Medical Condition_Asthma', 'Medical Condition_Cancer',
+       'Medical Condition_Diabetes', 'Medical Condition_Hypertension',
+       'Medical Condition_Obesity', 'Insurance Provider_Blue Cross',
+       'Insurance Provider_Cigna', 'Insurance Provider_Medicare',
+       'Insurance Provider_UnitedHealthcare', 'Medication_Ibuprofen',
+       'Medication_Lipitor', 'Medication_Paracetamol', 'Medication_Penicillin',
+       'Admission Type_Emergency', 'Admission Type_Urgent'],
+      dtype='object')
+
+--------------------------------------------------------------------------------
+TRAIN TEST SPLIT:
+
+
+  Target column: Test Results
+
+
+  Test size: 0.3
+
+
+  Train size: 7000
+
+
+  Test size count: 3000
+
+
+  Scaling: None
+
+
+  Checks: All checks passed successfully
+
+--------------------------------------------------------------------------------
+MODEL TRAINING:
+
+
+  Model name: DecisionTreeClassifier
+
+
+  Training started: 2024-07-16 20:16:09
+
+
+  Training completed: 2024-07-16 20:16:09
+
+
+  Training duration: 0.05 seconds
+
+
+  Status: completed
+
+--------------------------------------------------------------------------------
+MODEL EVALUATION:
+
+
+  Accuracy: 0.33466666666666667
+
+
+  Classification report:               precision    recall  f1-score   support
+
+           0       0.33      0.34      0.33      1030
+           1       0.32      0.32      0.32       944
+           2       0.36      0.35      0.35      1026
+
+    accuracy                           0.33      3000
+   macro avg       0.33      0.33      0.33      3000
+weighted avg       0.33      0.33      0.33      3000
+
+
+--------------------------------------------------------------------------------
+MODEL TUNING:
+
+
+  Tuning started: 2024-07-16 20:16:09
+
+
+  Method: Optuna for hyperparameter tuning
+
+
+  N trials: 50
+
+
+  Best hyperparameters:
+
+    criterion: gini
+    splitter: random
+    max_depth: 5
+    min_samples_split: 2
+    min_samples_leaf: 4
+
+
+  Tuning completed: 2024-07-16 20:16:10
+
+
+  Tuning duration: 0.58 seconds
+
+
+  Status: completed
+
+--------------------------------------------------------------------------------
+MODEL SAVING:
+
+
+  Model path: /Users/karthik/My-Github-Repos/ml-indus/artifacts/models/DecisionTreeClassifier_2024-07-16_20-16-10_model.pkl
+
+--------------------------------------------------------------------------------
+MODEL TUNING EVALUATION:
+
+
+  Accuracy: 0.333
+
+
+  Classification report:               precision    recall  f1-score   support
+
+           0       0.35      0.38      0.36      1030
+           1       0.31      0.41      0.36       944
+           2       0.35      0.22      0.27      1026
+
+    accuracy                           0.33      3000
+   macro avg       0.34      0.33      0.33      3000
+weighted avg       0.34      0.33      0.33      3000
+
+
+--------------------------------------------------------------------------------
+================================================================================
